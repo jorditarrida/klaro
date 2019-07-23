@@ -3,7 +3,7 @@ import React from 'react'
 export default class AppItem extends React.Component {
 
     render(){
-        const {checked, onToggle, name, title, description, t} = this.props
+        const {checked, onToggle, name, title, description, cookies, t} = this.props
         const required = this.props.required || false
         const optOut = this.props.optOut || false
         const purposes = this.props.purposes || []
@@ -29,6 +29,7 @@ export default class AppItem extends React.Component {
             </label>
             <div id={`${id}-description`}>
                 <p className="cm-app-description">{description || t([name, 'description'])}</p>
+                {cookies && <p className="cm-app-cookies">{t(['consentModal','cookies'])} {cookies.join(', ')}</p>}
                 {purposesContent}
             </div>
         </div>

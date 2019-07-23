@@ -1,5 +1,5 @@
 $box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
-$border-radius: 4px;
+$border-radius: 0;
 $border-dark: 1px solid #555;
 $font-color-dark: #eee;
 $font-color-dark-deemphasized: #999;
@@ -15,14 +15,18 @@ $blue4: #9AC3D4;
 $green1: #00AA3E;
 $green2: #006A4E;
 $green3: #01440C;
+$gray: #999;
 
-.klaro {
+$font-color: #111;
+$font-color-deemphasized: #333;
+
+.MortensenConsentManager {
 
     .cookie-modal, .cookie-notice {
 
         @import 'switch.scss';
 
-        font-size: 14px;
+        font-size: 16px;
 
         .slider {
             box-shadow: $box-shadow;
@@ -30,12 +34,13 @@ $green3: #01440C;
 
         a {
             color: $green1;
+            color: var(--mortensen-consent-manager-primary);
             text-decoration: none;
         }
 
         p, strong, h1, h2, ul, li {
             font-family: inherit;
-            color: $font-color-dark;
+            color: $font-color;
         }
 
         p, h1, h2, ul, li {
@@ -46,17 +51,23 @@ $green3: #01440C;
             margin-top: 0.7em;
         }
 
+        p {
+            line-height: 1.5;
+        }
+
         .cm-btn {
+            border-radius: $border-radius;
             box-shadow: $box-shadow;
-            color: $font-color-dark;
-            border-radius: 6px;
-            padding: 0.5em;
-            margin-right: 0.5em;
+            color: $font-color;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            font-weight: 700;
             border: 0;
+            font-size: 1rem;
 
             &.cm-btn-sm {
-                padding: 0.4em;
-                font-size: 1em;
+                padding: 0.5rem;
+                font-size: 0.8rem;
             }
 
             &.cm-btn-close {
@@ -65,16 +76,31 @@ $green3: #01440C;
             }
 
             &.cm-btn-success {
-                background: $green1;
+                background-color: $green1;
+                background-color: var(--mortensen-consent-manager-primary);
+                color: var(--mortensen-consent-manager-primary-contrast);
             }
 
             &.cm-btn-danger {
-                background: $blue3;
+                background: $gray;
             }
 
             &.cm-btn-info {
                 background: $blue1;
             }
+        }
+
+        .cm-btn-link {
+            display: block;
+            margin: 1rem auto 0;
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+            font-size: 0.8em;
+            font-weight: 700;
+            text-decoration: underline;
+            color: $green1;
+            color: var(--mortensen-consent-manager-primary);
         }
 
     }
@@ -87,19 +113,11 @@ $green3: #01440C;
         overflow: hidden;
         left: 0;
         top: 0;
-        z-index: 1000;
-
-        .cm-bg {
-            background: rgba(0,0,0,0.5);
-            height: 100%;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
+        font-size: 14px;
+        z-index: 2000000002;
 
         .cm-modal {
-            z-index: 1001;
+            z-index: 2000000003;
             box-shadow: $box-shadow;
 
             @media(min-width: 1024px){
@@ -119,14 +137,14 @@ $green3: #01440C;
 
             position: fixed;
             overflow: auto;
-            background: $bg-dark;
-            color: $font-color-dark;
-    
+            background-color: white;
+            color: $font-color;
+
             .hide   {
                 border: none;
                 background: none;
                 svg {
-                    stroke: $font-color-dark;
+                    stroke: $font-color;
                 }
                 position: absolute;
                 top: 20px;
@@ -134,20 +152,18 @@ $green3: #01440C;
             }
 
             .cm-footer {
-                padding: 1em;
+                padding: 2.5em;
                 border-top: $border-dark;
 
-                a.cm-powered-by {
-                    position: absolute;
-                    right: 1em;
-                    color: $font-color-dark-deemphasized;
-                    font-size: 0.8em;
-                    padding-top: 4px;
+                .cm-btn {
+                    display: block;
+                    width: 100%;
+                    max-width: 300px;
                 }
             }
 
             .cm-header {
-                padding: 1em;
+                padding: 2.5em;
                 padding-right: 24px;
                 border-bottom: $border-dark;
                 h1 {
@@ -161,7 +177,7 @@ $green3: #01440C;
             }
 
             .cm-body {
-                padding: 1em;
+                padding: 2.5em;
                 ul {
                     display: block;
                 }
@@ -173,6 +189,7 @@ $green3: #01440C;
                     padding :0;
                     margin: 0;
                     li.cm-app {
+                        margin-top: 1.5em;
                         &:first-child{
                             margin-top: 0;
                         }
@@ -191,22 +208,27 @@ $green3: #01440C;
 
                         p.purposes {
                             font-size: 0.8em;
-                            color: $font-color-dark-deemphasized;
+                            color: $font-color-deemphasized;
                         }
 
                         &.cm-toggle-all {
                             border-top: $border-dark;
-                            padding-top: 1em;
+                            padding-top: 1.5em;
                         }
 
                         span.cm-app-title {
+                            font-size: 1.2em;
                             font-weight: 600;
+                        }
+
+                        .cm-app-cookies {
+                            font-size: 0.8em;
                         }
 
                         span.cm-opt-out, span.cm-required {
                             padding-left: 0.2em;
                             font-size: 0.8em;
-                            color: $font-color-dark-deemphasized;
+                            color: $font-color-deemphasized;
                         }
                     }
                 }
@@ -215,36 +237,40 @@ $green3: #01440C;
     }
 
     .cookie-notice {
-
-        background: $bg-dark;
-        z-index: 999;
-
+        z-index: 2000000001;
         position: fixed;
-        width: 100%;
-        bottom: 0;
+        top: 0;
+        left: 0;
         right: 0;
-
-        @media(min-width: 990px){
-            box-shadow: $box-shadow;
-            border-radius: $border-radius;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            max-width: 300px;
-        }
-
-        @media(max-width: 989px){
-            border: none;
-            border-radius: 0;
-        }
+        bottom: 0;
+        font-size: 16px;
 
         .cn-body {
-            margin-bottom:0;
-            margin-right: 0;
+            position: fixed;
             bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            padding: 2.5em;
+            background-color: white;
+            box-shadow: $box-shadow;
 
-            padding: 1em;
-            padding-top: 0;
+            @media (min-width: 992px) {
+                display: flex;
+                align-items: center;
+            }
+
+            .cn-info {
+                @media (min-width: 992px) {
+                    flex: 1;
+                    padding-right: 2.5em;
+                }
+            }
+
+            .title {
+                margin-top: 0;
+                font-size: 2em;
+            }
 
             p {
                 margin-bottom: 0.5em;
@@ -253,18 +279,23 @@ $green3: #01440C;
             p.cn-changes {
                 text-decoration: underline;
             }
-    
+
             .cn-learn-more {
                 display: inline-block;
 
             }
 
-            p.cn-ok {
-                padding-top: 0.5em;
-                margin: 0;
+            .cn-ok {
+                margin-top: 1em;
+
+                @media (min-width: 992px) {
+                    flex: 0 0 300px;
+                    margin-top: 0;
+                }
             }
 
-            a.cn-decline {
+            .cn-ok .cm-btn {
+                width: 100%;
             }
         }
 
@@ -272,5 +303,14 @@ $green3: #01440C;
 
     .cookie-notice-hidden {
         display: none !important;
+    }
+
+    .cm-bg {
+        background: rgba(0,0,0,0.5);
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
     }
 }

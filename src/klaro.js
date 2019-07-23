@@ -1,4 +1,5 @@
 import 'scss/klaro.scss'
+//import 'scss/klaro.css';
 
 import React from 'react'
 import App from 'components/app.js'
@@ -12,9 +13,9 @@ import currentExecutingScript from 'current-executing-script';
 const script = document.currentScript || currentExecutingScript();
 const originalOnLoad = window.onload
 const convertedTranslations = convertToMap(translations)
-const configName = script.dataset.config || "klaroConfig"
+const configName = script.dataset.config || "MortensenConsentManagerConfig"
 const noAutoLoad = script.dataset.noAutoLoad == "true"
-const stylePrefix = script.dataset.stylePrefix || "klaro"
+const stylePrefix = script.dataset.stylePrefix || "MortensenConsentManager"
 const config = window[configName]
 const managers = {}
 
@@ -27,7 +28,7 @@ if (module.hot) {
 }
 
 function getElementID(config){
-    return config.elementID || 'klaro'
+    return config.elementID || 'MortensenConsentManager'
 }
 
 function getElement(config){

@@ -2,8 +2,8 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 30px;
+    width: 40px;
+    height: 25px;
 
     &.disabled {
 
@@ -24,8 +24,8 @@
     top: 0;
     left: 0;
     opacity: 0;
-    width: 50px;
-    height: 30px;
+    width: 40px;
+    height: 25px;
 }
 
 .cm-app-label {
@@ -47,10 +47,10 @@
     .slider:before {
         position: absolute;
         content: "";
-        height: 20px;
-        width: 20px;
+        height: 17px;
+        width: 17px;
         left: 5px;
-        bottom: 5px;
+        bottom: 4px;
         background-color: white;
         -webkit-transition: .4s;
         transition: .4s;
@@ -58,7 +58,7 @@
 
     /* Rounded sliders */
     .slider.round {
-        border-radius: 30px;
+        border-radius: 25px;
     }
 
     .slider.round:before {
@@ -70,9 +70,9 @@
     }
 
     input:checked + .slider:before {
-        -webkit-transform: translateX(20px);
-        -ms-transform: translateX(20px);
-        transform: translateX(20px);
+        -webkit-transform: translateX(23px);
+        -ms-transform: translateX(23px);
+        transform: translateX(23px);
     }
 }
 
@@ -82,10 +82,11 @@
 
 .cm-app-input:checked + .cm-app-label .slider {
     background-color: $blue1;
+    background-color: var(--mortensen-consent-manager-primary);   
 }
 
 .cm-app-input:checked + .cm-app-label .slider:before {
-    -webkit-transform: translateX(20px);
-    -ms-transform: translateX(20px);
-    transform: translateX(20px);
+    -webkit-transform: translateX(23px);
+    -ms-transform: translateX(23px);
+    transform: translateX(23px);
 }
